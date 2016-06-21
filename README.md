@@ -1,8 +1,8 @@
 ----------
-Blank: Asignador de Salas UC!
+Blank: Automatic assignator for classrooms Campus College UC!
 ===================
 
-## Integrantes:
+## Creators:
 
 
 | Nº Alumno    | Nombre              | Email UC      | Github          |
@@ -15,42 +15,38 @@ Blank: Asignador de Salas UC!
 
 # Uso
 
-Clonar el repositorio:
+Clone the repository:
 
 ```sh
 git clone https://github.com/IIC2143-2016-1/Blank
 ```
 
 
-Entrar a la carpeta del proyecto:
+Go inside the directory:
 
 ```sh
 cd Blank/project
 ```
 
-Instalar gemas:
+Install gems:
 
 ```sh
 bundle install
 ```
 
-Migrar base de datos:
+Database migrate:
 
 ```sh
 rake db:migrate db:seed
 ```
 
-Disfrutar de la aplicación:
+Join the app:
 
 ```sh
 rails s
 ```
 
-Ingresar a:
-
-  [Browser en localhost](http://localhost:3000/)
-
-Datos del administrador(creados gracias al db:seed):
+Admin details:
 ```sh
 cuenta: admin@admin.com
 clave: 12345678
@@ -59,6 +55,9 @@ clave: 12345678
 
 
 ###Uso y explicaciones dentro de la aplicación
+
+Translate Soon
+
 
 La aplicación web consiste en un sistema de manejo de salas dentro de la Universidad. Se puede asignar una sala a una cátedra, ayudantía, interrogación, examen u cualquier otra solicitud. *Se diseñaron tres usuarios:*
 
