@@ -1,0 +1,28 @@
+<h1>Eliminar Asignación</h1>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Curso</th>
+    <th>Modulo</th>
+    <th>Sala</th>
+    <th>Tipo</th>
+    <th>Periodo</th>
+    <th>Accion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @assignation_teacher.each do |assignation| %>
+      <tr>
+        <td><%= assignation[:course][:initials] %> - <%= assignation[:course][:nrc] %></td>
+        <td><%= assignation[:schedule][:module] %></td>
+        <td><%= assignation[:classroom][:name] %></td>
+        <td><%= assignation[:schedule][:tipo] %></td>
+        <td><%= assignation[:schedule][:date].nil? ? "Semestral": assignation[:schedule][:date] %></td>
+        <td>
+          <%= link_to "Eliminar Sala", schedules_deleteAssignation_do_path(:id => assignation[:assignation][:id]), :class => "btn btn-default"  %>
+        </td>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>

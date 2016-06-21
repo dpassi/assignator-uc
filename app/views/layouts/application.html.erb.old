@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= set_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <!-- fontAwesome css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid" style="padding-right: 50px">
+      <ul class="nav navbar-nav navbar-right ">
+        <li <% if current_page? root_path %>class="active"<% end %> ><%= link_to "Inicio", root_path %></li>
+        <li <% if current_page? schedules_new_path %>class="active"<% end %>><%= link_to "Estadisticas", estadisticas_path %></li>
+        <li <% if current_page? consultas_path %>class="active"<% end %> ><%= link_to "Consultas", consultas_path %></li>
+        <li <% if current_page? asignaciones_ver_path %>class="active"<% end %>><%= link_to "Salas Asignadas", asignaciones_ver_path %></li>
+        <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mis Salas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li <% if current_page? schedules_new_path %>class="active"<% end %>><%= link_to "Solicitar", schedules_new_path %></li>
+                <li <% if current_page? schedules_new_path %>class="active"<% end %>><%= link_to "Eliminar Sala", schedules_deleteAssignation_path %></li>
+              </ul>
+            </li>
+
+            <% if policy(:assignation).create? %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Herramientas Admin <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li <% if current_page? users_index_path %>class="active"<% end %>><%= link_to "Usuarios", users_index_path %></li>
+                    <li <% if current_page? asignaciones_path %>class="active"<% end %>><%= link_to "Asignar Cursos", asignaciones_path %></li>
+            <% end %>
+            <% if policy(:schedule).create? and policy(:classroom).create? and policy(:course).create? %>
+                <li <% if current_page? json_databaseLoad_path %>class="active"<% end %>><%= link_to "Descargar Base de Datos", json_databaseLoad_path %></li>
+            <% end %>
+                  </ul>
+                </li>
+
+          <li <% if current_page? edit_user_registration_path %>class="active"<% end %>><%= link_to('Mi Cuenta', edit_user_registration_path) %></li>
+          <li <% if current_page? destroy_user_session_path %>class="active"<% end %>><%= link_to "Desconectarse", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li <% if current_page? new_user_session_path %>class="active"<% end %>><%= link_to('Autenticarse', new_user_session_path) %></li>
+          <li <% if current_page? new_user_registration_path %>class="active"<% end %>><%= link_to('Registrarse', new_user_registration_path) %></li>
+        <% end %>
+      </ul>
+  </div>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
+
+</body>
+</html>

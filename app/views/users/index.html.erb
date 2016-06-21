@@ -1,0 +1,26 @@
+<h1>Usuarios</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.admin? ? "Administrador" : "Usuario" %></td>
+        <td>
+          <ul>
+            <li><%= link_to("Asignar Cursos", users_assign_course_path(:id => user.id))%></li>
+            <li><%= link_to("Quitar Cursos", users_unassign_course_path(:id => user.id))%></li>
+            <li><%= user.admin? ? link_to("Quitar permisos", users_change_rol_path(:id => user.id))
+                    : link_to("Hacer Admin", users_change_rol_path(:id => user.id)) %></li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

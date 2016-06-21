@@ -1,0 +1,7 @@
+<h1>Asignar Cursos a <%= @user.email %></h1>
+<%= bootstrap_form_for(@user,layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10", url: users_do_assign_url) do |f| %>
+    <%= f.select :courses ,@courses, { label: "Curso" }, { class: "selectpicker" } %>
+    <%= f.form_group do %>
+        <%= f.submit "Asignar" %>
+    <% end %>
+<% end %>

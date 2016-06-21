@@ -1,0 +1,263 @@
+
+<!--
+       Home Slider
+       ==================================== -->
+
+<section id="home-slider">
+  <div id="slider" class="sl-slider-wrapper">
+
+    <div class="sl-slider">
+
+      <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+
+        <div class="bg-img bg-img-1"></div>
+
+        <div class="slide-caption">
+          <div class="caption-content" >
+            <div style="background-color: rgba(0,0,0,.4);padding-bottom: 15px">
+              <h2 class="animated fadeInDown" >Nuevo Portal: Salas UC</h2>
+              <span class="animated fadeInDown">Creado directamente desde Ingeniería UC</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <% if not user_signed_in? %>
+      <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
+
+        <div class="bg-img bg-img-2"></div>
+        <div class="slide-caption">
+          <div class="caption-content">
+            <div style="background-color: rgba(0,0,0,.4);padding-bottom: 15px">
+              <h2>¿Eres Profesor o Administrador?</h2>
+              <span>Crea tu cuenta e identificate para obtener acceso a utiles herramientas</span>
+              <br><br>
+              <%= link_to('Autenticarse', new_user_session_path, :class => "btn btn-blue btn-effect") %>
+              <%= link_to('Registrarse', new_user_registration_path, :class => "btn btn-red btn-effect") %>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <% end %>
+
+      <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+
+        <div class="bg-img bg-img-3"></div>
+        <div class="slide-caption">
+          <div class="caption-content">
+            <div style="background-color: rgba(0,0,0,.4);padding-bottom: 15px">
+              <h2>¿Eres Alumno?</h2>
+              <span>La sección Servicios puede serte de gran ayuda</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /sl-slider -->
+
+    <!--
+    <nav id="nav-arrows" class="nav-arrows">
+        <span class="nav-arrow-prev">Previous</span>
+        <span class="nav-arrow-next">Next</span>
+    </nav>
+    -->
+
+    <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+      <a href="javascript:;" class="sl-prev">
+        <i class="fa fa-angle-left fa-3x"></i>
+      </a>
+      <a href="javascript:;" class="sl-next">
+        <i class="fa fa-angle-right fa-3x"></i>
+      </a>
+    </nav>
+
+
+    <nav id="nav-dots" class="nav-dots visible-xs visible-sm hidden-md hidden-lg">
+      <span class="nav-dot-current"></span>
+      <span></span>
+      <span></span>
+    </nav>
+
+  </div><!-- /slider-wrapper -->
+</section>
+
+<!--
+End Home SliderEnd
+==================================== -->
+
+
+
+
+<!-- Service section -->
+<section id="service">
+  <div class="container">
+    <div class="row">
+
+      <div class="sec-title text-center">
+        <h2 class="wow animated bounceInLeft">SERVICIOS</h2>
+        <p class="wow animated bounceInRight">En esta sección encontrarás todos los servicios que entregamos para que tengas toda la información sobre los cursos y sus salas.</p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn">
+        <div class="service-item">
+          <div class="service-icon">
+            <%= link_to estadisticas_path do %>
+                <i class="fa fa-pie-chart fa-3x"></i></a>
+            <% end %>
+          </div>
+          <h3>Estadísticas</h3>
+          <p>Las mejores estadísticas sobre los cursos y sus pruebas. ¿Qué día tiene más pruebas?, ¿O más clases?. Entérate de esto y más aquí.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.3s">
+        <div class="service-item">
+          <div class="service-icon">
+            <%= link_to consultas_path do %>
+                <i class="fa fa-question fa-3x"></i>
+            <% end %>
+          </div>
+          <h3>Consultas</h3>
+          <p>¿En qué sala está mi siguiente clase?, ¿Cuáles son las capacidades de la sala en donde estoy?, ¿Cómo llego a esa desconocida sala?. Enterate de eso y más aquí.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-xs-12 text-center wow animated zoomIn" data-wow-delay="0.6s">
+        <div class="service-item">
+          <div class="service-icon">
+            <%= link_to  asignaciones_ver_path do %>
+            <i class="fa fa-university fa-3x"></i>
+            <% end %>
+          </div>
+          <h3>Salas Asignadas</h3>
+          <p>Toda la información acerca la asignación de salas y cursos de la Universidad</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end Service section -->
+
+<!-- portfolio section -->
+<% if user_signed_in? %>
+<section id="tools">
+  <div class="container">
+    <div class="row">
+
+      <div class="sec-title text-center wow animated fadeInDown">
+        <h2>HERRAMIENTAS</h2>
+        <p>En esta sección encontraras una serie de herramientas útiles según tus permisos</p>
+      </div>
+
+
+      <ul class="project-wrapper wow animated fadeInUp">
+
+        <li class="portfolio-item">
+          <%= link_to schedules_new_path do %>
+              <%= image_tag "sala.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Solicitar Sala</h3>
+            <p>¿Prueba, Catedra o Ayudantía extra? Entra acá e ingresa en que horario la necesitas. </p>
+          </figcaption>
+        </li>
+        <li class="portfolio-item">
+          <%= link_to schedules_deleteAssignation_path do %>
+              <%= image_tag "sala_v.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Eliminar Sala</h3>
+            <p>¿Ya no usaras la sala solicitada? Liberala, puede que alguien más la necesite </p>
+          </figcaption>
+        </li>
+        <% if policy(:assignation).create? %>
+        <li class="portfolio-item">
+          <%= link_to users_index_path do %>
+          <%= image_tag "users.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Usuarios</h3>
+            <p>Controla los cursos de los profesores y nombra nuevos Administradores. </p>
+          </figcaption>
+        </li>
+        <li class="portfolio-item">
+          <%= link_to asignaciones_manual_path do %>
+          <%= image_tag "manual.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Asignación Manual</h3>
+            <p>Asigna la sala solicitada de manera manual. </p>
+          </figcaption>
+        </li>
+        <li class="portfolio-item">
+          <%= link_to asignaciones_generar_path do %>
+          <%= image_tag "automatico.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Asignación Automática</h3>
+            <p>Asigna la sala solicitada de manera automática. (Todas las solicitudes)</p>
+          </figcaption>
+        </li>
+        <% end %>
+        <% if policy(:schedule).create? and policy(:classroom).create? and policy(:course).create? %>
+        <li class="portfolio-item">
+          <%= link_to json_databaseLoad_path do %>
+          <%= image_tag "ddbb.png", :class => "img-responsive" %>
+          <% end %>
+          <figcaption class="mask">
+            <h3>Descargar Base de Datos</h3>
+            <p>¿Aún no descargas la Base de Datos de cursos y salas? ¡Hazlo aquí!</p>
+          </figcaption>
+        </li>
+        <% end %>
+
+      </ul>
+
+    </div>
+  </div>
+</section>
+<!-- end portfolio section -->
+    <!-- account section -->
+    <section id="account">
+      <div class="container">
+        <div class="row">
+
+          <div class="sec-title text-center wow animated fadeInDown">
+            <h2>Cuenta</h2>
+            <p>¡Accede a tu información de Usuario!</p>
+          </div>
+        </div>
+        <div class="row" style="padding: 30px;background: #2E2E2E">
+          <div class="col-xs-12 text-center">
+            <%= link_to('Mi Cuenta', edit_user_registration_path, :class => "btn btn-blue btn-effect") %>
+            <%= link_to('Mis Cursos', users_courses_path, :class => "btn btn-red btn-effect") %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end account section -->
+<% else %>
+    <!-- account section -->
+    <section id="account">
+      <div class="container">
+        <div class="row">
+          <div class="sec-title text-center wow animated fadeInDown">
+            <h2>Cuenta</h2>
+            <p>¿Eres Profesor y no tienes cuenta? ¡Crea tu cuenta aquí! </p>
+            <p>¿Ya tienes cuenta? Accede a ella y obten todas tus herramientas de administración que te brindamos </p>
+          </div>
+        </div>
+        <div class="row" style="padding: 30px;background: #2E2E2E">
+          <div class="col-xs-12 text-center">
+            <%= link_to('Autenticarse', new_user_session_path, :class => "btn btn-blue btn-effect") %>
+            <%= link_to('Registrarse', new_user_registration_path, :class => "btn btn-red btn-effect") %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end account section -->
+<% end %>
+
+<%= javascript_include_tag "pages" %>

@@ -1,0 +1,24 @@
+<h1 class="text-center">Mis Cursos</h1>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Curso</th>
+    <th>Modulo</th>
+    <th>Sala</th>
+    <th>Tipo</th>
+    <th>Periodo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @assignation_teacher.each do |assignation| %>
+      <tr>
+        <td><%= assignation[:course][:initials] %> - <%= assignation[:course][:nrc] %></td>
+        <td><%= assignation[:schedule][:module] %></td>
+        <td><%= assignation[:classroom][:name] %></td>
+        <td><%= assignation[:schedule][:tipo] %></td>
+        <td><%= assignation[:schedule][:date].nil? ? "Semestral": assignation[:schedule][:date] %></td>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>

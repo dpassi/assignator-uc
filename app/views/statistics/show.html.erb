@@ -1,0 +1,21 @@
+
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<h2 class="text-center"> Éxito de algoritmo de asignación</h2>
+<%= pie_chart [['Bien',@cantidad_bien],
+               ['Falla Proyector',@falla_proyector],
+               ['Falla Enchufe',@falla_enchufes],
+               ['Falla Capacidad',@falla_capacidad]] %>
+
+<h2 class="text-center"> Cantidad de cursos por módulo</h2>
+<%= column_chart @densidad_cursos.sort_by {|_key, value| -value}, xtitle:"Módulo", ytitle:"Ocupación de Salas (%)" %>
+
+<h2 class="text-center"> Cantidad de clases por día de la semana</h2>
+<%= line_chart [
+                   {name: "Catedra", data: @frecuencia_diaria_catedra},
+                   {name: "Ayudantía", data: @frecuencia_diaria_ayudantia}
+               ], xtitle: "Días", ytitle: "Frecuencia" %>
+
+<h2 class="text-center"> Cantidad de pruebas por día de la semana</h2>
+<%= line_chart [
+                   {name: "Pruebas", data: @frecuencia_diaria_pruebas},
+               ], xtitle: "Días", ytitle: "Frecuencia" %>

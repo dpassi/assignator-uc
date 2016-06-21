@@ -1,0 +1,33 @@
+<h1>Solicitar Sala</h1>
+<%= bootstrap_form_for(@schedule,layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10", url: "/schedules/create") do |f| %>
+    <%= f.select :nrc ,@courses, { label: "Curso" }, { class: "selectpicker" } %>
+    <%= f.select :module, @modules, { label: "Modulo"} %>
+    <%= f.form_group :date do %>
+        <input type="checkbox" name="semestral" id="checkSem"> Semestral
+        <div class="day" hidden="hidden">
+          <select name="day" class="form-control">
+            <% ["L","M","W","J","V","S"].each do |day| %>
+                <option value="<%= day %>"><%= day %></option>
+            <% end %>
+          </select>
+        </div>
+    <% end %>
+    <div class="date">
+    <%= f.date_select :date, { label: "Día"} %>
+    </div>
+
+    <%= f.form_group do %>
+    <%= f.submit "Solicitar" %>
+    <% end %>
+<% end %>
+<script>
+  $('#checkSem').change(function () {
+    if($(this).is(":checked")) {
+      $('.date').hide();
+      $('.day').show();
+    }else{
+      $('.date').show();
+      $('.day').hide();
+    }
+  })
+</script>

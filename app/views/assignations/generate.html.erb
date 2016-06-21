@@ -1,0 +1,11 @@
+<% provide(:title,"Asignacion Completada") %>
+<div class="alert alert-success" role="alert">
+	<h1>
+		La Asignación de cursos a las salas se ha realizado con éxito. En breve será redirigido la lista con todas las asignaciones hechas.
+	</h1>
+</div>
+<script type="text/javascript">
+	window.setTimeout(function(){
+		window.location = "<%= request.protocol + request.host_with_port %>" + "/asignaciones/ver"
+	},5000)
+</script>

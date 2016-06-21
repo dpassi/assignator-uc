@@ -1,0 +1,53 @@
+<% provide(:title,"Salas Asignadas") %>
+<h1 class="text-center"> Salas Asignadas</h1>
+<table class="table table-bordered" style="color: #000;">
+<thead>
+<tr>
+	<th>Modulo</th>
+	<th>Curso</th>
+	<th style="min-width: 160px">Requerimientos</th>
+	<th>Sala</th>
+	<th style="min-width: 160px" >Caracteristicas</th>
+	<th>Problema</th>
+</tr>
+</thead>
+<tbody>
+<% @final_assignation.each do |a| %>
+	<tr class="<% if  (a[:course][:vacancy]  > a[:classroom][:capacity]) or 
+						(a[:course][:power_n] > a[:classroom][:power_n]) or
+						(a[:course][:projector] == true and a[:classroom][:projector] == false )
+						%> danger <% end %>">
+		<td><%= a[:schedule][:module] %></td>
+		<td><%= a[:course][:nrc].to_s + " - " + a[:course][:initials] %></td>
+		<td>
+			<ul class="list-unstyled">
+				<li><b>Cupos</b>: <%= a[:course][:vacancy] %></li>
+				<li><b>Enchufes</b>: <%= a[:course][:power_n] %></li>
+				<li><b>Proyector</b>: <%= a[:course][:projector] == true ? "Si" : "No" %></li>
+			</ul>
+		</td>
+		<td><%= a[:classroom][:name] %></td>
+		<td>
+			<ul class="list-unstyled">
+				<li><b>Capacidad</b>: <%= a[:classroom][:capacity] %></li>
+				<li><b>Enchufes</b>: <%= a[:classroom][:power_n] %></li>
+				<li><b>Proyector</b>: <%= a[:classroom][:projector] == true ? "Si" : "No" %></li>
+			</ul>
+		</td>
+		<td>
+			<ul> 
+				<% if a[:course][:vacancy]  > a[:classroom][:capacity] %>
+				<li> La capacidad del curso excede la capacidad de la sala</li>
+				<% end %>
+				<% if a[:course][:power_n] > a[:classroom][:power_n] %>
+				<li> La cantidad de enchufes necesarios excede los disponibles en la sala</li>
+				<% end %>
+				<% if a[:course][:projector] == true and a[:classroom][:projector] == false %>
+				<li> El curso requiere proyector y la sala no lo posee </li>
+				<% end %>
+			</ul>
+		</td>
+	</tr>
+<% end %>
+</tbody>
+</table>

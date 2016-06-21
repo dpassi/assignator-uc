@@ -1,0 +1,32 @@
+<% provide(:title,"Consulta 1") %>
+<h1>Busqueda de curso <%=@nombre_curso%></h1>
+
+<table class="table">
+	<tr>
+		<th>Curso</th>
+		<th>Sección</th>
+		<th>Información</th>
+
+	</tr>
+
+			<% @result.keys.each do |key| %>
+			<tr>
+				<td><%= @result[key][0][:course][:initials] %></td>
+        <td><%= @result[key][0][:course][:section] %></td>
+        <td>
+        <table class="table table-bordered">
+					<th>Tipo</th>
+					<th>Modulo</th>
+					<th>Sala</th>
+        <% @result[key].each do |element| %>
+              <tr>
+                <td><%= element[:schedule][:tipo]%></td>
+                <td><%= element[:schedule][:module]%></td>
+                <td><%= element[:classroom][:identifier]%></td>
+              </tr>
+          <% end %>
+          </table>
+          </td>
+			</tr>
+	<% end %>
+  </table>

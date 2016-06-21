@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= set_title(yield(:title)) %></title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <!-- fontAwesome css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <% if not current_page? root_path %>
+      <style>
+        body{
+          padding-top: 90px;
+        }
+      </style>
+  <% end %>
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+		================================================== -->
+
+  <!-- bootstrap.min  PARA SLIDER --
+  <link rel="stylesheet" href="css/slit-slider.scss">
+  <!-- Main Stylesheet --
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Modernizer Script for old Browsers --
+  <script src="js/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+<body id="body">
+<!-- preloader -->
+<div id="preloader">
+  <div class="loder-box">
+    <div class="battery"></div>
+  </div>
+</div>
+<!-- end preloader -->
+<!--
+        Fixed Navigation
+        ==================================== -->
+<header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
+    <% if notice %>
+  <div class="alert alert-success text-center" id="notificacion" role="alert">
+      <%= notice %>
+  </div>
+  <% end %>
+  <div class="container">
+    <div class="navbar-header">
+      <!-- responsive nav button -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- /responsive nav button -->
+
+      <!-- logo -->
+      <h1 class="navbar-brand">
+        <%= link_to "Salas UC", root_path(anchor: 'body') %>
+      </h1>
+      <!-- /logo -->
+    </div>
+
+    <!-- main nav -->
+    <nav class="collapse navbar-collapse navbar-right" role="navigation">
+      <ul id="nav" class="nav navbar-nav">
+        <li><%= link_to "Inicio", root_path(anchor: 'body') %></li>
+        <li><%= link_to "Servicios", root_path(anchor: 'service') %></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "Herramientas", root_path(anchor: 'tools') %></li>
+        <li><%= link_to "Desconectarse", destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to('Mi Cuenta', root_path(anchor: 'account')) %></li>
+        <li style="padding: 15px">Hola  <%= current_user.email %> - <% if current_user.admin? %><i class="fa fa-key"></i><% else %><i class="fa fa-graduation-cap"></i><% end %></li>
+        <% else %>
+        <li><%= link_to('Autenticarse', root_path(anchor: 'account')) %></li>
+        <li><%= link_to('Registrarse', root_path(anchor: 'account')) %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <!-- /main nav -->
+
+
+  </div>
+</header>
+<!--
+End Fixed Navigation
+==================================== -->
+
+<main class="site-content" role="main">
+  <% if not current_page? root_path %>
+      <div class="container">
+  <% end %>
+  <%= yield %>
+  <% if not current_page? root_path %>
+      </div>
+  <% end %>
+</main>
+<footer id="footer">
+  <div class="container">
+    <div class="row text-center">
+      <div class="footer-content">
+        <p>Desarrollado por <a href="https://github.com/IIC2143-2016-1/Blank">Blank</a></p>
+        <p><strong>Blue Onepage</strong> Design and Developed By<a href="http://www.themefisher.com">Themefisher</a> </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Essential jQuery Plugins
+================================================== -->
+
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+      if($('main').height() < 500){
+        $('main').height(550);
+      }
+  })
+</script>
+<% if notice %>
+<script>
+  $(document).ready(
+  setTimeout(function () {
+    $('#notificacion').fadeOut()
+  }, 3000)
+  )
+</script>
+<% end %>
+<!-- Single Page Nav BAJAR DE A POCO --
+<script src="js/jquery.singlePageNav.min.js"></script>
+<!-- jquery easing BAJAR DE APOCO--
+<script src="js/jquery.easing.min.js"></script>
+<!-- Fullscreen slider --
+<script src="js/jquery.slitslider.js"></script>
+<script src="js/jquery.ba-cond.min.js"></script>
+<!-- Custom Functions --
+<script src="js/main.js"></script>
+-->
+</body>
+</html>

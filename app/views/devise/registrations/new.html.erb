@@ -1,0 +1,19 @@
+<div class="container-fluid" style="max-width: 500px">
+<h2 class="text-center">Registrarse</h2>
+
+<%= bootstrap_form_for(resource,layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10", as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.email_field :email, required: true, autofocus: true %>
+    <%= f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+    <%= f.password_field :password_confirmation, required: true %>
+    <%= f.form_group do %>
+    <%= f.submit "Registrarse" %>
+    <% end %>
+<% end %>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-2">
+	<%= render "devise/shared/links" %>
+			</div>
+		</div>
+	</div>
+</div>

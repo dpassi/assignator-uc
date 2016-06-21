@@ -1,0 +1,80 @@
+<head>
+  <script
+  src="http://maps.googleapis.com/maps/api/js">
+  </script>
+
+  <script>
+    var myCenter=new google.maps.LatLng(<%= @sala[:latitude] %>, <%= @sala[:longitude]%>);
+
+    function initialize()
+    {
+      var mapProp = {
+        center:myCenter,
+        zoom:100,
+        mapTypeId:google.maps.MapTypeId.HYBRID
+      };
+
+      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+      var marker=new google.maps.Marker({
+        position:myCenter,
+      });
+
+      marker.setMap(map);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
+<h1>
+  Información de la Sala <%= @sala[:name] %>
+</h1>
+<div class="col-md-6">
+  <div id="googleMap" style="width:100%;height:380px;"></div>
+</div>
+
+<div class="col-md-6">
+  <table class="table">
+    <tr>
+      <th>Descripción</th>
+      <td><%= @sala[:information]=="" ? "No disponible":@sala[:information] %></td>
+    </tr>
+    <tr>
+      <th>Piso</th>
+      <td><%= @sala[:floor] %></td>
+    </tr>
+    <tr>
+      <th>
+        Capacidad
+      </th>
+      <td>
+        <%= @sala[:capacity] %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Número de enchufes disponibles
+      </th>
+      <td>
+        <%= @sala[:power_n] %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Proyector disponible
+      </th>
+      <td>
+        <%= @sala[:projector] ? "Si":"No" %>
+      </td>
+    </tr>
+  </table>
+  <p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+  <p> </p>
+
+
+
+
+</div>
