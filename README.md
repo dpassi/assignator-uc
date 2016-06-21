@@ -1,51 +1,56 @@
 ----------
-Blank: Automatic Assignator for Campus of UC College! 
+Blank: Asignador de Salas UC!
 ===================
 
-## Created by:
+## Integrantes:
 
 
-| Nombre              | Email    | Github          |
-|:--------------------|:--------------|:----------------
-| Diego Passi     | djpassi@uc.cl | @djpassi     |
- | David Galemiri | dagalemiri@uc.cl | @dagalemiri |
-| Gabriel Ulloa     | gsulloa@uc.cl | @gsulloa     |
+| Nº Alumno    | Nombre              | Email UC      | Github          |
+|:-------------|:--------------------|:--------------|:----------------|
+| 13637967     | Diego Passi     | djpassi@uc.cl | @djpassi     |
+| 13633317     | David Galemiri     | dagalemiri@uc.cl | @dagalemiri     |
+| 13634143     | Gabriel Ulloa     | gsulloa@uc.cl | @gsulloa     |
 
-# Use
 
-Repository clone:
+
+# Uso
+
+Clonar el repositorio:
 
 ```sh
 git clone https://github.com/IIC2143-2016-1/Blank
 ```
 
 
-Go inside the directory:
+Entrar a la carpeta del proyecto:
 
 ```sh
 cd Blank/project
 ```
 
-Install gems:
+Instalar gemas:
 
 ```sh
 bundle install
 ```
 
-Database Migrate:
+Migrar base de datos:
 
 ```sh
 rake db:migrate db:seed
 ```
 
-Join the application:
+Disfrutar de la aplicación:
 
 ```sh
 rails s
 ```
 
+Ingresar a:
 
-Administrator details:
+  [Browser en localhost](http://localhost:3000/)
+
+Datos del administrador(creados gracias al db:seed):
 ```sh
 cuenta: admin@admin.com
 clave: 12345678
@@ -53,9 +58,7 @@ clave: 12345678
 ```
 
 
-###Inside the app
-
-......Translate Soon........
+###Uso y explicaciones dentro de la aplicación
 
 La aplicación web consiste en un sistema de manejo de salas dentro de la Universidad. Se puede asignar una sala a una cátedra, ayudantía, interrogación, examen u cualquier otra solicitud. *Se diseñaron tres usuarios:*
 
@@ -75,3 +78,4 @@ Existe una pestaña llamada ```Herramientas```, la cual solo está disponible pa
 **El profesor** puede ver los cursos y las respectivas salas que fueron asignadas. Además, puede eliminar o solicitar una asignación de salas. 
 
 La pestaña ```Servicios``` **está disponible para todos los usuarios** (administrador, profesor y alumno). En este apartado se pueden hacer consultas sobre las salas que han sido asignadas, ver en el mapa donde está ubicada, revisar estadísticas, entre otros.
+
