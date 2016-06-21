@@ -8,7 +8,7 @@ Blank: Automatic Assignator for Campus of UC College!
 | Nombre              | Email    | Github          |
 |:--------------------|:--------------|:----------------
 | Diego Passi     | djpassi@uc.cl | @djpassi     |
- | David Galemiri     | dagalemiri@uc.cl | @dagalemiri
+ | David Galemiri | dagalemiri@uc.cl | @dagalemiri |
 | Gabriel Ulloa     | gsulloa@uc.cl | @gsulloa     |
 
 # Use
