@@ -5,7 +5,7 @@ Blank: Automatic assignator for classrooms Campus College UC!
 ## Creators:
 
 
-| Nombre              | Email     | Github          |
+| Name             | Email     | Github          |
 |:--------------------|:--------------|:----------------|
 | Diego Passi     | djpassi@uc.cl | @djpassi     |
 | David Galemiri     | dagalemiri@uc.cl | @dagalemiri     |
