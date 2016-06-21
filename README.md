@@ -5,11 +5,11 @@ Blank: Automatic assignator for classrooms Campus College UC!
 ## Creators:
 
 
-| Nº Alumno    | Nombre              | Email UC      | Github          |
-|:-------------|:--------------------|:--------------|:----------------|
-| 13637967     | Diego Passi     | djpassi@uc.cl | @djpassi     |
-| 13633317     | David Galemiri     | dagalemiri@uc.cl | @dagalemiri     |
-| 13634143     | Gabriel Ulloa     | gsulloa@uc.cl | @gsulloa     |
+| Nombre              | Email     | Github          |
+|:--------------------|:--------------|:----------------|
+| Diego Passi     | djpassi@uc.cl | @djpassi     |
+| David Galemiri     | dagalemiri@uc.cl | @dagalemiri     |
+| Gabriel Ulloa     | gsulloa@uc.cl | @gsulloa     |
 
 
 
